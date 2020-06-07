@@ -57,6 +57,7 @@ public class Stream_Basic {
         //java8 : 400칼로리 이하의 저칼로리 음식 찾기
         List<String> lowCaloricDishesName2 = menu.stream()
                 .filter(d->d.getCalories()<400)
+                .filter(Dish::isVegetarian)
                 .sorted(Comparator.comparing(Dish::getCalories))
                 .map(Dish::getName)
                 .collect(toList());
