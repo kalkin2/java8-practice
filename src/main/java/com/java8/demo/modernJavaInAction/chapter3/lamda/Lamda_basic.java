@@ -1,8 +1,8 @@
-package com.java8.demo.Lamda.ex1_lamdaStyle;
+package com.java8.demo.modernJavaInAction.chapter3.lamda;
 
 
 
-import static com.java8.demo.Lamda.ex1_lamdaStyle.Color.*;
+import static com.java8.demo.modernJavaInAction.chapter3.lamda.Color.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * lamda 표현식으로 수정
  */
-public class Ex1 {
+public class Lamda_basic {
 
   //함수형 인터페이스
   public interface Predicate<T>{

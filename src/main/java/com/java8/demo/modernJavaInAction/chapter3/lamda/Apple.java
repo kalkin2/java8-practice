@@ -1,4 +1,4 @@
-package com.java8.demo.Lamda.ex1_lamdaStyle;
+package com.java8.demo.modernJavaInAction.chapter3.lamda;
 
 public class Apple{
 
