@@ -70,6 +70,21 @@ public class Strem_step2 {
                 .collect(toList());
         System.out.println("skip으로 건너뛰기 : "+dishes);
 
+        //5.4 검색과 매칭
+        //적어도 한개 이상의 바게타리안이 있는지 찾기
+        if(specialMenu.stream().anyMatch(Dish::isVegetarian)){
+            System.out.println("vegetarian find!!!!");
+        }
+
+        //모든 요소가 모든요소는 같다 1000칼로리 이하이다.
+        boolean isHealthy = specialMenu.stream().allMatch(dish->dish.getCalories() < 1000);
+        System.out.println("isHealthy :"+isHealthy);
+
+        //위와 같음. 모든요소는 같지 않다 =! 1000칼로리 이상
+        boolean isHealthy2 = specialMenu.stream().noneMatch(dish-> dish.getCalories()>=1000);
+        System.out.println("isHealthy2 : "+isHealthy2);
+
+
 
     }
 }
