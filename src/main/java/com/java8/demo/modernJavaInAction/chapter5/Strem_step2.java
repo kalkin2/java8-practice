@@ -3,10 +3,12 @@ package com.java8.demo.modernJavaInAction.chapter5;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -20,6 +22,21 @@ class Dish{
     private final Dish.Type type;
     public enum Type {MEAT, FISH, OTHER}
 
+    public String getName() {
+        return name;
+    }
+
+    public boolean isVegetarian() {
+        return vegetarian;
+    }
+
+    public int getCalories() {
+        return calories;
+    }
+
+    public Type getType() {
+        return type;
+    }
 }
 
 
@@ -37,6 +54,12 @@ public class Strem_step2 {
 
 
          );
+        //메뉴 갯수
+        int menuNum =  specialMenu.stream().map(d->1).reduce(0,Integer::sum);
+        System.out.println("menuNum :"+menuNum);
+        //메뉴 총 칼로리
+        int totalCalorie = specialMenu.stream().map(d->d.getCalories()).reduce(0,Integer::sum);
+        System.out.println("total :"+totalCalorie);
 
          List<Dish>filteredMenu = specialMenu.stream()
                  .filter(dish->dish.getCalories() <320)
@@ -84,7 +107,17 @@ public class Strem_step2 {
         boolean isHealthy2 = specialMenu.stream().noneMatch(dish-> dish.getCalories()>=1000);
         System.out.println("isHealthy2 : "+isHealthy2);
 
+        specialMenu.stream()
+                .filter(Dish::isVegetarian)
+                .findAny();//Optional Return
+               // .isPresent(dish -> System.out.println(dish.getName()));
 
 
+        //제곱근의 값중 3으로 나누어 떨어지는 첫번째 요소 찾기
+        List<Integer>someNumbers = Arrays.asList(1,2,3,4,5);
+                Optional<Integer> firstSquareDivisiblebyThree = someNumbers.stream()
+                        .map(n->n*n) //1,4,9,16,25
+                        .filter(n->n % 3 ==0)
+                        .findFirst();//9 Optional Return
     }
 }
