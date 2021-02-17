@@ -12,8 +12,7 @@ public class BiconsumerTest {
 
         User user = new User();
         Map<String, BiConsumer<User, String>> basicUserSetter =
-                Map.of("GR001", (s, v) -> s.setUserName(v)
-                        , "GR002", (s, v) -> s.setAddress(v));
+                Map.of("GR001", User::setUserName, "GR002", User::setAddress);
 
 
         List<TempDataBase> userInfo = List.of(
